@@ -1,0 +1,17 @@
+{
+  "name": "app-mudanza",
+  "version": "1.0.0",
+  "description": "Aplicación de mudanzas personal para gestionar cajas",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Tu Nombre",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "multer": "^1.4.5-lts.2",
+    "mysql2": "^3.14.0"
+  }
+}

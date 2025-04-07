@@ -1,0 +1,429 @@
+/* ------------------------ */
+/* RESET BÁSICO Y GLOBAL */
+/* ------------------------ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #e8f5e9, #ffffff);
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  /* ------------------------ */
+  /* HEADER Y BOTONES PRINCIPALES */
+  /* ------------------------ */
+  
+  .header-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+  
+  .header-principal h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  button {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-principal {
+    background: linear-gradient(45deg, #4CAF50, #81C784);
+    color: white;
+    font-size: 18px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .btn-principal i {
+    font-size: 20px;
+  }
+  
+  .btn-principal:hover {
+    background: linear-gradient(45deg, #388E3C, #66BB6A);
+    transform: scale(1.05);
+  }
+  
+  /* Botones de acción */
+  .btn-editar,
+  .btn-eliminar {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    color: white;
+  }
+  
+  .btn-editar {
+    background-color: #2196F3;
+  }
+  
+  .btn-editar:hover {
+    background-color: #1976D2;
+  }
+  
+  .btn-eliminar {
+    background-color: #f44336;
+  }
+  
+  .btn-eliminar:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* ------------------------ */
+  /* LISTADO DE CAJAS (ACORDEÓN) */
+  /* ------------------------ */
+  
+  #contenedorCajas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .caja {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .caja-header {
+    padding: 20px;
+    background: linear-gradient(90deg, #4CAF50, #66BB6A);
+    color: white;
+    font-size: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .caja-header:hover {
+    background: linear-gradient(90deg, #388E3C, #4CAF50);
+  }
+  
+  .caja-detalle {
+    padding: 20px;
+    display: none;
+    background: #f9f9f9;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .caja-detalle.activo {
+    display: flex;
+  }
+  
+  .detalle-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .detalle-info p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .detalle-info strong {
+    color: #333;
+  }
+  
+  .detalle-foto {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .detalle-foto img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+  }
+  
+  .detalle-foto.empty {
+    background: #e0e0e0;
+    border-radius: 8px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-style: italic;
+  }
+  
+  .acciones {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  /* ------------------------ */
+  /* MODAL */
+  /* ------------------------ */
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    overflow: auto;
+  }
+  
+  .modal-content {
+    background: linear-gradient(to bottom right, #ffffff, #f1f8e9);
+    margin: 10% auto;
+    padding: 25px 20px;
+    border-radius: 16px;
+    width: 95%;
+    max-width: 420px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: zoomIn 0.4s;
+  }
+  
+  .close {
+    color: #666;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .close:hover {
+    color: #333;
+  }
+  
+  /* ------------------------ */
+  /* FORMULARIOS */
+  /* ------------------------ */
+  
+  form input,
+  form textarea,
+  form select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border 0.3s;
+  }
+  
+  form input:focus,
+  form textarea:focus,
+  form select:focus {
+    border-color: #4CAF50;
+    outline: none;
+  }
+  
+  form button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    background: linear-gradient(45deg, #4CAF50, #81C784);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  form button[type="submit"]:hover {
+    background: linear-gradient(45deg, #388E3C, #66BB6A);
+    transform: scale(1.03);
+  }
+  
+  .vista-previa-foto {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .vista-previa-foto img.img-previa {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* ------------------------ */
+  /* FILTROS */
+  /* ------------------------ */
+  
+  .filtros {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .filtros input,
+  .filtros select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  .filtros-linea {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #e8f5e9;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 16px;
+  }
+  
+  .checkbox-group label:hover {
+    background: #d0e8d0;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #4CAF50;
+  }
+  
+  /* ------------------------ */
+  /* TOASTS */
+  /* ------------------------ */
+  
+  #toastContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    pointer-events: none;
+  }
+  
+  .toast {
+    background-color: white;
+    color: #333;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    animation: toastIn 0.4s ease, toastOut 0.4s ease 2.6s;
+  }
+  
+  .toast.success {
+    background: linear-gradient(45deg, #4CAF50, #81C784);
+    color: white;
+  }
+  
+  .toast.error {
+    background: linear-gradient(45deg, #f44336, #e57373);
+    color: white;
+  }
+  
+  /* ------------------------ */
+  /* EFECTO BLUR Y ANIMACIONES */
+  /* ------------------------ */
+  
+  .blur-activo main,
+  .blur-activo header,
+  .blur-activo .modal,
+  .blur-activo .filtros,
+  .blur-activo #contenedorCajas {
+    filter: blur(5px);
+    pointer-events: none;
+  }
+  
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes toastIn {
+    from {
+      opacity: 0;
+      
+    }
+    to {
+      opacity: 1;
+      
+    }
+  }
+  
+  @keyframes toastOut {
+    from {
+      opacity: 1;
+      
+    }
+    to {
+      opacity: 0;
+      
+    }
+  }
+
+  .contador-cajas {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+  
