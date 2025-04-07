@@ -1,3 +1,5 @@
+require('dotenv').config({ path: '.env.local' });
+
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
@@ -5,19 +7,19 @@ const cajasRoutes = require('./backend/routes/cajas');
 
 const app = express();
 
-// Middleware generales
+// Middlewares
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Rutas de la API
+// API
 app.use('/api/cajas', cajasRoutes);
 
-// Servir archivos estáticos
+// Archivos públicos
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Ruta 404 personalizada (opcional)
+// 404 personalizado
 app.use((req, res) => {
   res.status(404).send('Página no encontrada');
 });
