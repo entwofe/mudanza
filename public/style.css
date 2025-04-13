@@ -457,4 +457,29 @@
     font-weight: bold;
 }
 
-  
+.subir-foto {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+
+.btn-subir-foto {
+  background: linear-gradient(45deg, #78ccfd, #4a91ba);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.btn-subir-foto:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+#foto {
+  display: none;
+}

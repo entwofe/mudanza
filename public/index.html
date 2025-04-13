@@ -1,150 +1,168 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mudanza 📦</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mudanza 📦</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Iconos FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
 
-    <header class="header-principal">
-        <h1>Mudanza 📦</h1>
-        <button id="btnAbrirModal" class="btn-principal">
-          <i class="fas fa-plus"></i> Caja
-        </button>
-      </header>      
+  <!-- Header -->
+  <header class="header-principal">
+    <h1>Mudanza 📦</h1>
+    <button id="btnAbrirModal" class="btn-principal" aria-label="Añadir nueva caja">
+      <i class="fas fa-plus"></i> Caja
+    </button>
+  </header>
 
-    <main>
+  <!-- Main -->
+  <main>
 
-        <!-- FILTROS -->
-        <section id="filtros" class="filtros">
-            <input type="text" id="filtroTexto" placeholder="🔍 Buscar...">
+    <!-- Filtros -->
+    <section id="filtros" class="filtros">
+      <input type="text" id="filtroTexto" placeholder="🔍 Buscar..." aria-label="Buscar cajas por texto">
 
-            <div class="filtros-linea">
-                <select id="filtroUbicacion">
-                    <option value="">🏠 Ubicaciones</option>
-                    <option value="Salón">Salón</option>
-                    <option value="Cocina">Cocina</option>
-                    <option value="Baño">Baño</option>
-                    <option value="Dormitorio">Dormitorio</option>
-                    <option value="Vestidor">Vestidor</option>
-                    <option value="Estudio">Estudio</option>
-                    <option value="Taller">Taller</option>
-                    <option value="Trastero">Trastero</option>
-                </select>
+      <div class="filtros-linea">
+        <select id="filtroUbicacion" aria-label="Filtrar por ubicación">
+          <option value="">🏠 Ubicaciones</option>
+          <option value="Salón">Salón</option>
+          <option value="Cocina">Cocina</option>
+          <option value="Baño">Baño</option>
+          <option value="Dormitorio">Dormitorio</option>
+          <option value="Vestidor">Vestidor</option>
+          <option value="Estudio">Estudio</option>
+          <option value="Taller">Taller</option>
+          <option value="Trastero">Trastero</option>
+        </select>
 
-                <select id="filtroCategoria">
-                  <option value="">📦 Categorías</option>
-                  <option value="Ropa">Ropa</option>
-                  <option value="Libros">Libros</option>
-                  <option value="Decoración">Decoración</option>
-                  <option value="Herramientas">Herramientas</option>
-                  <option value="Tecnología">Tecnología</option>
-                  <option value="Navidad">Navidad</option>
-                  <option value="Recuerdos">Recuerdos</option>
-                  <option value="Documentos">Documentos</option>
-                  <option value="Otros">Otros</option>
-                </select>
-                
+        <select id="filtroCategoria" aria-label="Filtrar por categoría">
+          <option value="">📦 Categorías</option>
+          <option value="Ropa">Ropa</option>
+          <option value="Libros">Libros</option>
+          <option value="Decoración">Decoración</option>
+          <option value="Herramientas">Herramientas</option>
+          <option value="Tecnología">Tecnología</option>
+          <option value="Navidad">Navidad</option>
+          <option value="Recuerdos">Recuerdos</option>
+          <option value="Documentos">Documentos</option>
+          <option value="Otros">Otros</option>
+        </select>
 
-                <select id="filtroPrioridad">
-                    <option value="">⭐ Prioridad</option>
-                    <option value="Alta">Alta</option>
-                    <option value="Media">Media</option>
-                    <option value="Baja">Baja</option>
-                </select>
-            </div>
-            <div class="checkbox-group">
-                <label>
-                  <input type="checkbox" id="filtrofragil" name="fragil" value="1">
-                  Frágil
-                </label>
-                <label>
-                  <input type="checkbox" id="filtropesado" name="pesado" value="1">
-                  Pesado
-                </label>
-              </div>
-              
-        </section>
+        <select id="filtroPrioridad" aria-label="Filtrar por prioridad">
+          <option value="">⭐ Prioridad</option>
+          <option value="Alta">Alta</option>
+          <option value="Media">Media</option>
+          <option value="Baja">Baja</option>
+        </select>
+      </div>
 
-        <!-- LISTADO CAJAS -->
-        <section class="listado-cajas">
-          <div id="contadorCajas" class="contador-cajas">Total: 0 cajas</div> 
-          <div id="contenedorCajas">
-              <!-- Aquí se cargarán las cajas como acordeones -->
-          </div>
-      </section>
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" id="filtrofragil" name="fragil" value="1">
+          Frágil
+        </label>
+        <label>
+          <input type="checkbox" id="filtropesado" name="pesado" value="1">
+          Pesado
+        </label>
+      </div>
+    </section>
+
+    <!-- Listado de cajas -->
+    <section class="listado-cajas">
+      <div id="contadorCajas" class="contador-cajas">Total: 0 cajas</div>
+      <div id="contenedorCajas">
+        <!-- Aquí se cargarán dinámicamente las cajas -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toasts -->
+  <div id="toastContainer"></div>
+
+  <!-- Modal Nueva Caja -->
+  <div id="modalNuevaCaja" class="modal" aria-modal="true" role="dialog">
+    <div class="modal-content">
+      <span class="close" id="cerrarModal" aria-label="Cerrar modal">&times;</span>
+      <h2 id="modalTitulo">Nueva Caja</h2>
+
+      <form id="formNuevaCaja">
+        <input type="number" id="numero_caja" placeholder="Número de caja" required>
+
+        <input type="text" id="nombre" placeholder="Nombre de la caja" required>
+
+        <select id="categoria" required>
+          <option value="">📦 Categoría</option>
+          <option value="Ropa">Ropa</option>
+          <option value="Libros">Libros</option>
+          <option value="Decoración">Decoración</option>
+          <option value="Herramientas">Herramientas</option>
+          <option value="Tecnología">Tecnología</option>
+          <option value="Navidad">Navidad</option>
+          <option value="Recuerdos">Recuerdos</option>
+          <option value="Documentos">Documentos</option>
+          <option value="Otros">Otros</option>
+        </select>
+
+        <select id="ubicacion" required>
+          <option value="">🏠 Ubicación</option>
+          <option value="Salón">Salón</option>
+          <option value="Cocina">Cocina</option>
+          <option value="Baño">Baño</option>
+          <option value="Dormitorio">Dormitorio</option>
+          <option value="Vestidor">Vestidor</option>
+          <option value="Estudio">Estudio</option>
+          <option value="Taller">Taller</option>
+          <option value="Trastero">Trastero</option>
+        </select>
+
+        <textarea id="contenido" placeholder="Contenido detallado"></textarea>
+
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" id="fragil" name="fragil" value="1">
+            Frágil
+          </label>
+          <label>
+            <input type="checkbox" id="pesado" name="pesado" value="1">
+            Pesado
+          </label>
+        </div>
+
+        <select id="prioridad" required>
+          <option value="">⭐ Prioridad</option>
+          <option value="Alta">Alta</option>
+          <option value="Media">Media</option>
+          <option value="Baja">Baja</option>
+        </select>
+
+        <input type="file" id="foto" accept="image/*">
+        <!-- Vista previa -->
+        <div id="vistaPreviaFoto" class="vista-previa-foto"></div>
+        
+        <div class="subir-foto">
+          <button type="button" id="btnSubirFoto" class="btn-subir-foto">
+            📷 Añadir foto
+          </button>
+          <input type="file" id="foto" accept="image/*" style="display: none;">
+        </div>
       
 
-    </main>
-    <div id="toastContainer"></div>
-
-    <!-- MODAL NUEVA CAJA -->
-    <div id="modalNuevaCaja" class="modal">
-        <div class="modal-content">
-            <span class="close" id="cerrarModal">&times;</span>
-            <h2 id="modalTitulo">Nueva Caja</h2>
-            <form id="formNuevaCaja">
-
-                <input type="number" id="numero_caja" placeholder="Número de caja" required>
-
-                <input type="text" id="nombre" placeholder="Nombre de la caja" required>
-
-                <select id="categoria">
-                  <option value="">📦 Categoría</option>
-                  <option value="Ropa">Ropa</option>
-                  <option value="Libros">Libros</option>
-                  <option value="Decoración">Decoración</option>
-                  <option value="Herramientas">Herramientas</option>
-                  <option value="Tecnología">Tecnología</option>
-                  <option value="Navidad">Navidad</option>
-                  <option value="Recuerdos">Recuerdos</option>
-                  <option value="Documentos">Documentos</option>
-                  <option value="Otros">Otros</option>
-                  </select>
-
-                <select id="ubicacion" required>
-                    <option value="">🏠 Ubicación</option>
-                    <option value="Salón">Salón</option>
-                    <option value="Cocina">Cocina</option>
-                    <option value="Baño">Baño</option>
-                    <option value="Dormitorio">Dormitorio</option>
-                    <option value="Vestidor">Vestidor</option>
-                    <option value="Estudio">Estudio</option>
-                    <option value="Taller">Taller</option>
-                    <option value="Trastero">Trastero</option>
-                </select>
-
-                <textarea id="contenido" placeholder="Contenido detallado"></textarea>
-
-                <div class="checkbox-group">
-                    <label>
-                      <input type="checkbox" id="fragil" name="fragil" value="1">
-                      Frágil
-                    </label>
-                    <label>
-                      <input type="checkbox" id="pesado" name="pesado" value="1">
-                      Pesado
-                    </label>
-                  </div>
-
-                  <select id="prioridad" required>
-                    <option value="">⭐ Prioridad</option>
-                    <option value="Alta">Alta</option>
-                    <option value="Media">Media</option>
-                    <option value="Baja">Baja</option>                    
-                </select>                
-
-                <input type="file" id="foto" accept="image/*">
-                <div id="vistaPreviaFoto" class="vista-previa-foto"></div>
-
-                <button type="submit">Guardar Caja</button>
-            </form>
-        </div>
+        <button type="submit">Guardar Caja</button>
+      </form>
     </div>
-    
-    <script src="app.js"></script>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js" defer></script>
+
 </body>
 </html>
