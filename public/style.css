@@ -146,7 +146,8 @@
   }
   
   .caja-header:hover {
-    background: linear-gradient(90deg, #388E3C, #4CAF50);
+    opacity: 0.85;
+    cursor: pointer;
   }
   
   .caja-detalle {
@@ -159,6 +160,7 @@
   
   .caja-detalle.activo {
     display: flex;
+
   }
   
   .detalle-info {
