@@ -104,6 +104,35 @@
     overflow: hidden;
     transition: all 0.3s ease;
   }
+
+  .categoria-ropa .caja-header {
+    background: linear-gradient(90deg, #FF8A65, #FF7043); /* naranja ropa */
+}
+.categoria-libros .caja-header {
+    background: linear-gradient(90deg, #7986CB, #5C6BC0); /* azul libros */
+}
+.categoria-decoración .caja-header {
+    background: linear-gradient(90deg, #FFB74D, #FFA726); /* dorado decoración */
+}
+.categoria-herramientas .caja-header {
+    background: linear-gradient(90deg, #4DB6AC, #26A69A); /* verde azulado herramientas */
+}
+.categoria-tecnología .caja-header {
+    background: linear-gradient(90deg, #64B5F6, #42A5F5); /* azul claro tecnología */
+}
+.categoria-navidad .caja-header {
+    background: linear-gradient(90deg, #EF5350, #E53935); /* rojo navidad */
+}
+.categoria-recuerdos .caja-header {
+    background: linear-gradient(90deg, #BA68C8, #AB47BC); /* lila recuerdos */
+}
+.categoria-documentos .caja-header {
+    background: linear-gradient(90deg, #81C784, #66BB6A); /* verde documentos */
+}
+.categoria-otros .caja-header {
+    background: linear-gradient(90deg, #B0BEC5, #90A4AE); /* gris otros */
+}
+
   
   .caja-header {
     padding: 20px;

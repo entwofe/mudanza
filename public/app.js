@@ -22,6 +22,7 @@ function aplicarFiltros() {
     const texto = document.getElementById('filtroTexto').value.toLowerCase();
     const ubicacion = document.getElementById('filtroUbicacion').value;
     const prioridad = document.getElementById('filtroPrioridad').value;
+    const categoria = document.getElementById('filtroCategoria').value; // <-- asegúrate que capturas esto
     const filtroFragilActivo = document.getElementById('filtrofragil').checked;
     const filtroPesadoActivo = document.getElementById('filtropesado').checked;
 
@@ -32,22 +33,23 @@ function aplicarFiltros() {
         const coincideTexto = caja.nombre.toLowerCase().includes(texto) ||
                               caja.categoria.toLowerCase().includes(texto) ||
                               caja.contenido.toLowerCase().includes(texto);
-
         const coincideUbicacion = ubicacion === '' || caja.ubicacion === ubicacion;
         const coincidePrioridad = prioridad === '' || caja.prioridad === prioridad;
+        const coincideCategoria = categoria === '' || caja.categoria === categoria; // <-- importante aquí
         const coincideFragil = !filtroFragilActivo || caja.fragil == 1;
         const coincidePesado = !filtroPesadoActivo || caja.pesado == 1;
 
-        return coincideTexto && coincideUbicacion && coincidePrioridad && coincideFragil && coincidePesado;
+        return coincideTexto && coincideUbicacion && coincidePrioridad && coincideCategoria && coincideFragil && coincidePesado;
     });
 
-    // 🔥 Ahora actualizamos el contador después de filtrar:
-    const contador = document.getElementById('contadorCajas');
-    contador.textContent = `Total: ${cajasFiltradas.length} caja${cajasFiltradas.length !== 1 ? 's' : ''}`;
+    if (cajasFiltradas.length === 0) {
+        contenedor.innerHTML = '<p style="text-align:center; margin-top:20px;">No se encontraron cajas.</p>';
+        return;
+    }
 
     cajasFiltradas.forEach(caja => {
         const divCaja = document.createElement('div');
-        divCaja.classList.add('caja');
+        divCaja.classList.add('caja', `categoria-${caja.categoria.toLowerCase()}`);
         divCaja.innerHTML = `
             <div class="caja-header">
                 <span>#${caja.numero_caja}</span>
@@ -72,14 +74,12 @@ function aplicarFiltros() {
             </div>
         `;
 
-        // Eventos de acordeón
         const header = divCaja.querySelector('.caja-header');
         const detalle = divCaja.querySelector('.caja-detalle');
         header.addEventListener('click', () => {
             detalle.classList.toggle('activo');
         });
 
-        // Eventos botones
         const btnEditar = divCaja.querySelector('.btn-editar');
         btnEditar.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -95,6 +95,7 @@ function aplicarFiltros() {
         contenedor.appendChild(divCaja);
     });
 }
+
 
 
 function abrirModalEditar(caja) {
@@ -239,6 +240,8 @@ document.getElementById('filtroUbicacion').addEventListener('change', aplicarFil
 document.getElementById('filtroPrioridad').addEventListener('change', aplicarFiltros);
 document.getElementById('filtrofragil').addEventListener('change', aplicarFiltros); // 👈 NUEVO
 document.getElementById('filtropesado').addEventListener('change', aplicarFiltros); // 👈 NUEVO
+document.getElementById('filtroCategoria').addEventListener('change', aplicarFiltros);
+
 
 
 // Cargar al inicio
